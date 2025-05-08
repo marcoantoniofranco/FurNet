@@ -1,4 +1,4 @@
-﻿namespace FurNet.Rotas;
+﻿namespace FurNet.Models;
 
 public class Usuario
 {

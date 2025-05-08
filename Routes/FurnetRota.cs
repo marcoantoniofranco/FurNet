@@ -5,5 +5,7 @@ public static class FurnetRota
     public static void FurnetRotas(this WebApplication app)
     {
         app.MapGet("home", () => "Bem vindo");
+        app.MapGet("/pets", () => "Minimal API rodando! 😎");
+
     }
 }

@@ -10,6 +10,7 @@ namespace FurNet.Models
         public string Raca {get; set;}
         public int Idade {get; set;}
         public double Peso {get; set;}
+        public string Especie { get; set; }
         public int UsuarioId {get; set;}
         public Usuario Usuario {get; set;}
 

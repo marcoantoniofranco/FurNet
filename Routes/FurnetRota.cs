@@ -8,8 +8,8 @@ public static class FurnetRota
     {
         app.MapGet("home", () => "Bem vindo");
         app.MapGet("/pets", (AppDbContext db) => {    
-            var produtos = db.Pets.ToList();
-             return Results.Ok(produtos);});
+            var pets = db.Pets.ToList();
+             return Results.Ok(pets);});
 
     }
 }

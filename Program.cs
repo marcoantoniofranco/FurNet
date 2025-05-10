@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen(c =>
 
 // Configurando o EF Core com SQLite
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=Pets.db"));
+    options.UseSqlite("Data Source=FurNet.db"));
 
 var app = builder.Build();
 

@@ -8,4 +8,11 @@ public class Usuario
    public string Senha {get; set;}
 
    public List<Pet> Pets {get; set;} = new();
+
+   public bool IsValidEmail()
+    {
+        return !string.IsNullOrEmpty(Email) &&
+               Email.Contains("@") &&
+               Email.Contains(".");
+    }
 }

@@ -1,19 +1,21 @@
 import './LoginPage.css';
+import LoginBox from './components/LoginBox';
 
 export default function LoginPage() {
+  const handleLogin = (username, password) => {
+    console.log('Login com:', username, password);
+  };
+
+  const handleSignup = () => {
+    console.log('Redirecionando para página de cadastro');
+  };
+
   return (
     <div className="login-background">
-      <div className="login-box">
-        <h2>Login</h2>
-        <input type="text" placeholder="Usuário" className="login-input" />
-        <input type="password" placeholder="Senha" className="login-input" />
-        <button type="button" className="login-btn">
-          Entrar
-        </button>
-        <button type="button" className="signup-btn">
-          Criar Conta
-        </button>
-      </div>
+      <LoginBox 
+        onLogin={handleLogin}
+        onSignup={handleSignup}
+      />
     </div>
   );
 }

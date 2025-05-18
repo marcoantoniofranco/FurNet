@@ -1,11 +1,10 @@
 import './App.css';
-import Quinn from './Quinn';
+import LoginPage from './LoginPage';
 
 function App() {
   return (
     <div>
-      <h1>Quinn</h1>
-      <Quinn titulo="teste" />
+      <LoginPage />
     </div>
   );
 }

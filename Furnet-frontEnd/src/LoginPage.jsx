@@ -7,7 +7,7 @@ export default function LoginPage() {
   };
 
   const handleSignup = () => {
-    console.log('Redirecionando para página de cadastro');
+    window.location.href = '/signup';
   };
 
   return (

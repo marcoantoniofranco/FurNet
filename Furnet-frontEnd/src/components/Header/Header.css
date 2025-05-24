@@ -1,0 +1,84 @@
+.furnet-header {
+  background-color: #1e1e1e;
+  padding: 15px 30px;
+  color: #e0e0e0;
+  border-radius: 8px;
+  border: 1px solid #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.navegacao-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-furnet {
+  font-size: 1.9em;
+  font-weight: 700;
+  color: #7c4dff;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.links-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+}
+
+.links-menu li {
+  margin-left: 20px;
+}
+
+.item-menu {
+  color: #e0e0e0;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s, background-color 0.2s;
+  position: relative;
+}
+
+.item-menu:hover {
+  color: #7c4dff;
+  background-color: #2d2d2d;
+}
+
+
+.item-menu.botao-login {
+  background-color: transparent;
+  color: #7c4dff; 
+  border: 1px solid #7c4dff;
+  padding: 9px 18px; 
+  font-weight: 500;
+  box-shadow: none; 
+}
+
+.item-menu.botao-login:hover {
+  background-color: rgba(124, 77, 255, 0.1); 
+  color: #7c4dff; 
+  transform: translateY(-1px); 
+}
+
+.item-menu.botao-cta {
+  background-color: #7c4dff;
+  color: #fff;
+  padding: 10px 20px;
+  font-weight: 500; 
+  border: none;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.item-menu.botao-cta:hover {
+  background-color: #6c3aef;
+  color: #fff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
+}

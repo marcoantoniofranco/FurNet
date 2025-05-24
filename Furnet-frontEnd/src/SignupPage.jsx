@@ -46,8 +46,8 @@ export default function SignupPage() {
   };
 
   const voltar = () => {
-    // Navegando de volta para a página de login usando React Router
-    window.location.href = '/login';
+    // Navegando de volta para a página inicial usando React Router
+    window.location.href = '/';
   };
 
   return (

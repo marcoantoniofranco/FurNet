@@ -1,29 +1,26 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom'; 
-import Header from './components/Header/Header.jsx'; 
-import LoginPage from './LoginPage.jsx';
-import SignupPage from './SignupPage.jsx'; 
+import { Route, Routes } from 'react-router-dom';
 import './App.css';
-
+import Header from './components/Header/Header.jsx';
+import HomePage from './pages/HomePage.jsx';
+import LoginPage from './pages/LoginPage.jsx';
+import ProfilePage from './pages/ProfilePage.jsx';
+import SignupPage from './pages/SignupPage.jsx';
 
 function App() {
   return (
-    <>
+    <div className="App">
       <Header />
-      <main style={{ marginTop: '20px', padding: '0 20px' }}>
+      <main className="AppBody">
+        {/* Configuração das rotas da aplicação */}
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
-          <Route 
-            path="/" 
-            element={
-            <div style={{ padding: '20px', textAlign: 'center' }}>
-                <p>(Página Inicial - Conteúdo ainda vai ser adicionado)</p>
-              </div>
-            }/>
+          <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </main>
-    </>
+    </div>
   );
 }
 

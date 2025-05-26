@@ -1,84 +1,58 @@
 .furnet-header {
-  background-color: #1e1e1e;
-  padding: 15px 30px;
-  color: #e0e0e0;
-  border-radius: 8px;
-  border: 1px solid #333;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  background-color: white;
+  top: 0;
+  z-index: 100;
 }
 
 .navegacao-header {
-  max-width: 1200px;
+  max-width: 800px;
   margin: 0 auto;
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 70px;
 }
 
 .logo-furnet {
-  font-size: 1.9em;
-  font-weight: 700;
-  color: #7c4dff;
-  text-decoration: none;
-  letter-spacing: 0.5px;
+  font-family: 'Spectral', serif;
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  position: relative;
+  z-index: 1;
+}
+
+.logo-furnet::after {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background-color: #fb1;
+  border-radius: 3px;
+  position: absolute;
+  bottom: 2px;
+  right: -8px;
+  z-index: -1;
+  display: block;
 }
 
 .links-menu {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
-  align-items: center;
-}
-
-.links-menu li {
-  margin-left: 20px;
+  gap: 30px;
+  list-style: none;
 }
 
 .item-menu {
-  color: #e0e0e0;
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 6px;
-  font-size: 15px;
+  color: #333;
+  padding: 8px 0;
   font-weight: 500;
-  transition: color 0.2s, background-color 0.2s;
-  position: relative;
 }
 
 .item-menu:hover {
-  color: #7c4dff;
-  background-color: #2d2d2d;
+  color: #764701;
+  border-bottom: 2px solid #fb1;
 }
 
-
-.item-menu.botao-login {
-  background-color: transparent;
-  color: #7c4dff; 
-  border: 1px solid #7c4dff;
-  padding: 9px 18px; 
-  font-weight: 500;
-  box-shadow: none; 
-}
-
-.item-menu.botao-login:hover {
-  background-color: rgba(124, 77, 255, 0.1); 
-  color: #7c4dff; 
-  transform: translateY(-1px); 
-}
-
-.item-menu.botao-cta {
-  background-color: #7c4dff;
-  color: #fff;
-  padding: 10px 20px;
-  font-weight: 500; 
-  border: none;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-}
-
-.item-menu.botao-cta:hover {
-  background-color: #6c3aef;
-  color: #fff;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.25);
-}

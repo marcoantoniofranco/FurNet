@@ -1,24 +1,22 @@
 import React, { useState } from 'react';
-import './LoginPage.css'; // Reaproveitando o mesmo CSS
-import InputField from './components/InputField';
-import Button from './components/Button';
+import Button from '../components/Button.jsx';
+import InputField from '../components/InputField.jsx';
+import './LoginPage.css';
 
 export default function SignupPage() {
   const [nome, setNome] = useState('');
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
-  const [mensagem, setMensagem] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleSignup = async () => {
-    // Verificação básica
     if (!nome || !email || !senha) {
-      setMensagem('Por favor, preencha todos os campos');
+      setMessage('Por favor, preencha todos os campos');
       return;
     }
 
     try {
-      // Chamada para a API
-      const response = await fetch('http://localhost:5000/usuarios', {
+      const response = await fetch('http://localhost:5224/usuarios', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -26,27 +24,28 @@ export default function SignupPage() {
         body: JSON.stringify({
           Nome: nome,
           Email: email,
-          Senha: senha
-        })
+          Senha: senha,
+        }),
       });
 
       if (response.ok) {
-        setMensagem('Conta criada com sucesso!');
-        // Limpar os campos após sucesso
+        setMessage('Conta criada com sucesso!');
         setNome('');
         setEmail('');
         setSenha('');
+
+        setTimeout(() => {
+          window.location.href = '/login';
+        }, 2000);
       } else {
-        const erro = await response.text();
-        setMensagem(`Erro ao criar conta: ${erro}`);
+        setMessage('Erro ao criar conta');
       }
-    } catch (error) {
-      setMensagem(`Erro de conexão: ${error.message}`);
+    } catch {
+      setMessage('Erro de conexão');
     }
   };
 
-  const voltar = () => {
-    // Navegando de volta para a página inicial usando React Router
+  const goBack = () => {
     window.location.href = '/';
   };
 
@@ -54,41 +53,36 @@ export default function SignupPage() {
     <div className="login-background">
       <div className="login-box">
         <h2>Criar Conta</h2>
-        
-        {mensagem && <p className="mensagem">{mensagem}</p>}
-        
+
+        {message && (
+          <p className={message.includes('sucesso') ? 'success' : 'error'}>
+            {message}
+          </p>
+        )}
+
         <InputField
           type="text"
-          placeholder="Nome"
+          placeholder="Nome completo"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
         />
-        
+
         <InputField
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        
+
         <InputField
           type="password"
           placeholder="Senha"
           value={senha}
           onChange={(e) => setSenha(e.target.value)}
         />
-        
-        <Button 
-          text="Criar Conta" 
-          className="login-btn" 
-          onClick={handleSignup} 
-        />
-        
-        <Button 
-          text="Voltar" 
-          className="signup-btn" 
-          onClick={voltar} 
-        />
+
+        <Button text="Criar Conta" onClick={handleSignup} />
+        <Button text="Voltar" type="secondary" onClick={goBack} />
       </div>
     </div>
   );

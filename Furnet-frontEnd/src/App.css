@@ -1,7 +1,47 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --type-first: Helvetica, Arial, sans-serif;
+  --type-second: 'Spectral', georgia;
+}
+
+body {
+  padding-top: 4rem;
+  font-family: var(--type-first);
+  color: #333;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input {
+  display: block;
+  font-size: 1rem;
+  font-family: var(--type-first);
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
 .App {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: calc(100vh + 10rem);
 }
 
 .AppBody {

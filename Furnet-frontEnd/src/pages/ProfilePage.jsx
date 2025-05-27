@@ -4,8 +4,7 @@ import InputField from '../components/InputField.jsx';
 import './LoginPage.css';
 
 export default function ProfilePage() {
-  // Recupera dados salvos no navegador
-  const usuarioLogado = localStorage.getItem('usuarioLogado');
+  const usuarioEmail = localStorage.getItem('usuarioEmail');
   const [novaSenha, setNovaSenha] = useState('');
   const [message, setMessage] = useState('');
 
@@ -22,7 +21,7 @@ export default function ProfilePage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          Email: usuarioLogado,
+          Email: usuarioEmail,
           NovaSenha: novaSenha,
         }),
       });
@@ -40,6 +39,8 @@ export default function ProfilePage() {
 
   const handleLogout = () => {
     localStorage.removeItem('usuarioLogado');
+    localStorage.removeItem('usuarioEmail');
+    localStorage.removeItem('usuarioId');
     window.location.href = '/';
   };
 
@@ -54,7 +55,7 @@ export default function ProfilePage() {
 
         <div style={{ marginBottom: '20px' }}>
           <p>
-            <strong>Email:</strong> {usuarioLogado}
+            <strong>Email:</strong> {usuarioEmail || 'Não informado'}
           </p>
           <p>
             <strong>Status:</strong> Usuário ativo

@@ -398,3 +398,50 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+# SQLite database files
+*.db
+*.db-shm
+*.db-wal
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+
+# Frontend build output
+Furnet-frontEnd/dist/
+Furnet-frontEnd/build/
+
+# Frontend dependencies (already covered by node_modules/ but being explicit)
+Furnet-frontEnd/node_modules/
+
+# IDE specific files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# Log files
+*.log
+logs/
+
+# Package files
+*.tar.gz
+*.zip
+*.rar

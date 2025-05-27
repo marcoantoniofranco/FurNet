@@ -11,7 +11,6 @@ builder.Services.AddSwaggerGen(c =>
 {
 });
 
-// Configurando CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
@@ -22,20 +21,17 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Configurando o EF Core com SQLite
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlite("Data Source=FurNet.db"));
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-// Usar CORS
 app.UseCors("AllowFrontend");
 
 app.FurnetRotas();

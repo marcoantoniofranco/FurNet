@@ -4,48 +4,52 @@ import './Header.css';
 
 function Header() {
   const usuarioLogado = localStorage.getItem('usuarioLogado');
+  console.log('Header - usuarioLogado:', usuarioLogado);
+
+  const handleLogout = () => {
+    localStorage.removeItem('usuarioLogado');
+    localStorage.removeItem('usuarioEmail');
+    localStorage.removeItem('usuarioId');
+    window.location.href = '/';
+  };
 
   return (
-    <header className="furnet-header">
-      <nav className="navegacao-header">
-        <Link to="/" className="logo-furnet">
+    <header className="header">
+      <nav className="nav container">
+        <Link to="/" className="logo">
           Furnet
         </Link>
 
-        <ul className="links-menu">
-          <li>
-            <Link to="/" className="item-menu">
+        {usuarioLogado ? (
+          <div className="user-nav">
+            <Link to="/postagens" className="nav-link">
+              Postagens
+            </Link>
+            <Link to="/profile" className="nav-link">
+              Perfil
+            </Link>
+            <div className="user-info">
+              <span className="user-name">
+                Olá, {usuarioLogado || 'Usuário'}
+              </span>
+              <button className="logout-btn" onClick={handleLogout}>
+                Sair
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="auth-nav">
+            <Link to="/" className="nav-link">
               Home
             </Link>
-          </li>
-
-          {/* Mostra diferentes opções dependendo se está logado */}
-          {usuarioLogado ? (
-            <>
-              <li>
-                <Link to="/profile" className="item-menu">
-                  Meu Perfil
-                </Link>
-              </li>
-              <li>
-                <span className="item-menu">Olá, {usuarioLogado}!</span>
-              </li>
-            </>
-          ) : (
-            <>
-              <li>
-                <Link to="/login" className="item-menu">
-                  Login
-                </Link>
-              </li>
-              <li>
-                <Link to="/signup" className="item-menu">
-                  Criar Conta
-                </Link>
-              </li>
-            </>
-          )}
-        </ul>
+            <Link to="/login" className="nav-link">
+              Entrar
+            </Link>
+            <Link to="/signup" className="nav-link signup">
+              Criar Conta
+            </Link>
+          </div>
+        )}
       </nav>
     </header>
   );

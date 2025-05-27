@@ -3,6 +3,7 @@ using System;
 using FurNet.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FurNet.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250527035844_UpdatePostagemModel")]
+    partial class UpdatePostagemModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0");
@@ -54,9 +57,6 @@ namespace FurNet.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Categoria")
-                        .HasColumnType("TEXT");
-
                     b.Property<byte[]>("DadosArquivo")
                         .HasColumnType("BLOB");
 
@@ -69,10 +69,7 @@ namespace FurNet.Migrations
                     b.Property<string>("NomeArquivo")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("NomeUsuario")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("PetId")
+                    b.Property<int>("PetId")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("TipoArquivo")
@@ -118,9 +115,13 @@ namespace FurNet.Migrations
 
             modelBuilder.Entity("FurNet.Models.Postagem", b =>
                 {
-                    b.HasOne("FurNet.Models.Pet", null)
+                    b.HasOne("FurNet.Models.Pet", "Pet")
                         .WithMany("Postagens")
-                        .HasForeignKey("PetId");
+                        .HasForeignKey("PetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Pet");
                 });
 
             modelBuilder.Entity("FurNet.Models.Pet", b =>

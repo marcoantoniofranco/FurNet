@@ -4,7 +4,6 @@ import './Header.css';
 
 function Header() {
   const usuarioLogado = localStorage.getItem('usuarioLogado');
-  console.log('Header - usuarioLogado:', usuarioLogado);
 
   const handleLogout = () => {
     localStorage.removeItem('usuarioLogado');

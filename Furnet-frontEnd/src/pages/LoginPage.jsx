@@ -29,16 +29,10 @@ export default function LoginPage() {
 
       if (response.ok) {
         const userData = await response.json();
-        console.log('Dados do usuário:', userData);
         localStorage.clear();
-        localStorage.setItem('usuarioLogado', userData.Nome);
-        localStorage.setItem('usuarioEmail', userData.Email);
-        localStorage.setItem('usuarioId', userData.Id);
-        console.log('Salvou no localStorage:', {
-          nome: localStorage.getItem('usuarioLogado'),
-          email: localStorage.getItem('usuarioEmail'),
-          id: localStorage.getItem('usuarioId'),
-        });
+        localStorage.setItem('usuarioLogado', userData.nome);
+        localStorage.setItem('usuarioEmail', userData.email);
+        localStorage.setItem('usuarioId', userData.id);
         setMessage('Login realizado com sucesso!');
 
         setTimeout(() => {

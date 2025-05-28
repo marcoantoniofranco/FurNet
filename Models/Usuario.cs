@@ -11,8 +11,12 @@ public class Usuario
 
    public bool IsValidEmail()
     {
-        return !string.IsNullOrEmpty(Email) &&
-               Email.Contains("@") &&
-               Email.Contains(".");
+        if (string.IsNullOrEmpty(Email))
+            return false;
+            
+        // Verifica: texto + @ + texto + . + texto (sem espaços)
+        var emailRegex = new System.Text.RegularExpressions.Regex(
+            @"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+        return emailRegex.IsMatch(Email);
     }
 }

@@ -9,9 +9,27 @@ export default function SignupPage() {
   const [senha, setSenha] = useState('');
   const [message, setMessage] = useState('');
 
+  const isValidEmail = (email) => {
+    // Verifica: texto + @ + texto + . + texto (sem espaços)
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleSignup = async () => {
     if (!nome || !email || !senha) {
       setMessage('Por favor, preencha todos os campos');
+      return;
+    }
+
+    // Validação de email
+    if (!isValidEmail(email)) {
+      setMessage('Por favor, insira um email válido');
+      return;
+    }
+
+    // Validação de senha
+    if (senha.length < 6) {
+      setMessage('A senha deve ter pelo menos 6 caracteres');
       return;
     }
 
@@ -38,7 +56,13 @@ export default function SignupPage() {
           window.location.href = '/login';
         }, 2000);
       } else {
-        setMessage('Erro ao criar conta');
+        // Tentar pegar a mensagem de erro do backend
+        try {
+          const errorData = await response.json();
+          setMessage(errorData.message || 'Erro ao criar conta');
+        } catch {
+          setMessage('Erro ao criar conta');
+        }
       }
     } catch {
       setMessage('Erro de conexão');

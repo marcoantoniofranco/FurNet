@@ -34,6 +34,17 @@ public static class FurnetRota
                 Senha = dto.Senha
             };
             
+            if (!usuario.IsValidEmail())
+            {
+                return Results.BadRequest(new { message = "Email inválido. Deve conter @ e um domínio válido." });
+            }
+            
+            var emailExiste = await db.Usuarios.AnyAsync(u => u.Email == dto.Email);
+            if (emailExiste)
+            {
+                return Results.BadRequest(new { message = "Este email já está cadastrado." });
+            }
+            
             db.Usuarios.Add(usuario);
             await db.SaveChangesAsync();
             
